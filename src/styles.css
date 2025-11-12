@@ -1,0 +1,19 @@
+:root{font-family:Inter,system-ui,Helvetica,Arial,sans-serif;color:#111}
+body{background:#f6f7fb;margin:0;padding:24px;display:flex;justify-content:center}
+.app{width:100%;max-width:980px;background:#fff;border-radius:12px;box-shadow:0 6px 24px rgba(20,20,50,0.08);padding:20px}
+h1{margin:0 0 8px;font-size:20px}
+.grid{display:grid;grid-template-columns:1fr 320px;gap:18px}
+.card{background:#fff;padding:14px;border-radius:10px;border:1px solid #eee}
+label{display:block;font-weight:600;margin-bottom:6px}
+input[type=text]{width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;font-size:14px}
+select, button{width:100%;padding:10px;border-radius:8px;border:0}
+button{background:#0b76f6;color:#fff;font-weight:600;cursor:pointer}
+button.secondary{background:#6b7280}
+.row{display:flex;gap:8px}
+.box{min-height:90px;padding:10px;border-radius:8px;border:1px dashed #e6e7ee;background:#fbfdff}
+.history-list{max-height:260px;overflow:auto}
+.item{padding:8px;border-bottom:1px solid #f0f0f3;font-size:13px}
+.result{font-size:22px;font-weight:700}
+.small{font-size:13px;color:#555}
+.note{font-size:12px;color:#8b8f98;margin-top:8px}
+@media(max-width:880px){.grid{grid-template-columns:1fr}}
