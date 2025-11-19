@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Test expresiones regulares</title>
+  <link rel="stylesheet" href="./main.css">
+<style>
+    body {
+    font-family: "Segoe UI", sans-serif;
+    background: linear-gradient(135deg, #121826, #29323c);
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+    color: #e5e7eb;
+}
+
+.regex-wrapper {
+    width: 650px;
+    background: #1f2937;
+    padding: 30px 40px;
+    border-radius: 20px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    border: 1px solid #374151;
+}
+
+.title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-top: 18px;
+    display: block;
+    color: #9ca3af;
+    text-transform: uppercase;
+}
+
+.regex-box {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    background: #111827;
+    border-radius: 10px;
+    border: 1px solid #4b5563;
+}
+
+.regex-box .slash {
+    font-weight: bold;
+    color: #6ee7b7;
+}
+
+.regex-box input[type="text"] {
+    flex: 1;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #374151;
+    background: #1f2937;
+    color: #f3f4f6;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.regex-box input[type="text"]:focus {
+    border-color: #10b981;
+    box-shadow: 0 0 0 2px rgba(16,185,129,0.4);
+    outline: none;
+}
+
+.flags {
+    width: 70px !important;
+    text-align: center;
+    text-transform: lowercase;
+}
+
+textarea {
+    width: 100%;
+    margin-top: 8px;
+    padding: 14px;
+    height: 150px;
+    resize: vertical;
+    border: 1px solid #4b5563;
+    border-radius: 10px;
+    background: #111827;
+    color: #f3f4f6;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+textarea:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(59,130,246,0.4);
+    outline: none;
+}
+
+.result {
+    margin-top: 25px;
+    padding: 18px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #4b5563;
+    text-align: center;
+    font-weight: 600;
+}
+
+.result.ok {
+    background: rgba(16,185,129,0.15);
+    color: #6ee7b7;
+    border-color: #10b981;
+}
+
+.result.no {
+    background: rgba(239,68,68,0.18);
+    color: #fca5a5;
+    border-color: #ef4444;
+}
+
+</style>
+</head>
+<body>
+<div class="regex-wrapper">
+    <h1 class="title">Test Expresiones Regulares</h1>
+
+    <label class="label">Expresión Regular</label>
+    <div class="regex-box">
+        <span class="slash">/</span>
+        <input id="regexInput" type="text" placeholder="Inserta tu expresión regular aquí">
+        <span class="slash">/</span>
+        <input id="flagsInput" type="text" value="gm" class="flags">
+    </div>
+
+    <label class="label">Cadena de prueba</label>
+    <textarea id="testString" placeholder="Inserta aquí tu cadena de prueba"></textarea>
+
+    <div id="result" class="result no">No match</div>
+</div>
+
+
+
+  <script src="dist/bundle.js"></script>
+</body>
+</html>
+
