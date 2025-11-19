@@ -1,15 +1,32 @@
-export function isValidExpression(expr) {
-  if (typeof expr !== 'string' || !expr.trim()) return false;
-  const allowed = /^[0-9+\-*/().\s]+$/;
-  return allowed.test(expr);
-}
+export function initRegexTester() {
+    const regexInput = document.getElementById("regexInput");
+    const flagsInput = document.getElementById("flagsInput");
+    const testString = document.getElementById("testString");
+    const resultBox = document.getElementById("result");
 
-export function safeEval(expr) {
-  const cleaned = expr.replace(/\s+/g, '');
-  if (!isValidExpression(cleaned)) throw new Error('Expresión inválida');
-  if (/\.\.|[^0-9)\]]\s*[+\-*/]{2,}/.test(cleaned)) throw new Error('Expresión con operadores inválidos');
-  const normalized = cleaned.replace(/,/g, '.');
-  const result = Function(`"use strict"; return (${normalized})`)();
-  if (typeof result !== 'number' || !isFinite(result)) throw new Error('Resultado no numérico');
-  return result;
+    const update = () => {
+        const exp = regexInput.value;
+        const flags = flagsInput.value;
+        const test = testString.value;
+
+        try {
+            const regex = new RegExp(exp, flags);
+            const match = test.match(regex);
+
+            if (match) {
+                resultBox.textContent = "Match found: " + JSON.stringify(match);
+                resultBox.className = "result ok";
+            } else {
+                resultBox.textContent = "no match";
+                resultBox.className = "result no";
+            }
+        } catch (e) {
+            resultBox.textContent = "Error: " + e.message;
+            resultBox.className = "result no";
+        }
+    };
+
+    regexInput.addEventListener("input", update);
+    flagsInput.addEventListener("input", update);
+    testString.addEventListener("input", update);
 }
